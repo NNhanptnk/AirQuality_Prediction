@@ -4,6 +4,7 @@ import pickle
 
 
 app = Flask(__name__)
+# Posting from form
 model = pickle.load(open('randomForestRegressor.pkl','rb'))
 
 
@@ -17,6 +18,7 @@ def home():
 def predict():
     int_features = [float(x) for x in request.form.values()]
     final_features = [np.array(int_features)]
+    # Linear regression model using randomForestRegressor
     prediction = model.predict(final_features)
     print(prediction[0])
 
